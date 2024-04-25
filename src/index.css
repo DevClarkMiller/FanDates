@@ -2,6 +2,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  padding-bottom: 25px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -21,6 +22,7 @@ header, footer{
   width: 100%;
   background-color: #9B0000;
   color: white;
+  justify-self: start;
 }
 
 header{
@@ -33,14 +35,28 @@ header h1{
   margin-left: 15px;
 }
 
+.addPage{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-grow: 1;
+}
+
+.addPage h2{
+  justify-self: flex-start;
+}
+
 main{
   width: 75%;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-}
+  align-items: center;}
 
 footer{
   display: flex;
@@ -81,6 +97,83 @@ ul{
   flex-wrap: wrap;
 }
 
+.itemLabel{
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.inputText{
+  display: flex;
+  padding: 0;
+  margin: 0;
+  height: fit-content;
+  gap: 0;
+  width: 100%;
+}
+
+.item input[type="text"]{
+  border: none;
+  outline: none;
+  width: 25%;
+  background-color: rgb(230, 228, 228);
+}
+
+
+.itemRow:nth-child(even){
+  background-color: #f8d3d3;
+}
+
+.itemRow:nth-child(odd){
+  background-color: #f2f1f1;
+}
+
+.itemsTable{
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 2px 2px 3px black;
+}
+
+
+.itemsTable input{
+  border: none;
+  background-color: #ffffff00;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  width: 100%;
+}
+
+tr{
+  min-height: 35px;
+  line-height: 35px;
+}
+
+.itemHeader{
+  background-color: #9B0000;
+}
+
+.itemHeader input{
+  color: white;
+}
+
+.itemRank{
+  padding-left: 10px;
+}
+
+td, th{
+  width: 20%;
+  overflow: hidden;
+}
+
+.rankCol, .weightCOl{
+  width: 12%;
+}
+
 .item .itemLabel:focus,
 .item .itemLabel:hover{
   text-decoration: underline;
@@ -100,13 +193,18 @@ ul{
 
 .addForm{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
-  width: 50%;
+  width: calc(100vw * 0.85);
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
 }
 
 .addForm input{
   flex-grow: 1;
+  color: black;
 }
 
 .addForm label{
@@ -117,3 +215,41 @@ ul{
   width: 100%;
 }
 
+.dateNSync{
+  width: 100%;
+  margin-bottom: 35px;
+}
+
+.dateNSync .regText{
+  font-weight: 500;
+}
+
+.dateNSync button{
+  background-color:#9B0000;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.syncNAdd{
+  display: flex;
+  gap: 10px;
+}
+
+.selectWhat{
+  width: 100%;
+  padding-left: 15px;
+}
+
+.selectArea{
+  display: flex;
+  gap: 25px;
+  margin: 10px 0;
+}
+
+.selectArea select{
+  padding: 5px;
+  border-radius: 5px;
+  outline: 1px solid;
+}

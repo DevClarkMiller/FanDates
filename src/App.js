@@ -3,7 +3,7 @@ import React from 'react'
 import Header from './Header'
 import AddItem from './AddItem'
 import Content from './Content'
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom'
 
 
 
@@ -11,18 +11,20 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 function App() {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('courses')) || []);
 
-  const [newCourse, setNewCourse] = useState('')
-  const [newDate, setNewDate] = useState('')
-  const [newWeight, setNewWeight] = useState('')
-  const [newName, setNewName] = useState('')
-  const [newItem, setNewItem] = useState('')
+  const [newCourse, setNewCourse] = useState('');
+  const [newDate, setNewDate] = useState('');
+  const [newWeight, setNewWeight] = useState('');
+  const [newName, setNewName] = useState('');
+  const [newItem, setNewItem] = useState('');
+  const [getSort, setGetSort] = useState('');
+  const [getCourseView, setGetCourseView] = useState('');
+
+  const navigate = useNavigate(); //Used for redirecting
 
   const setAndSaveItems = (newItems) =>{
     setItems(newItems);
     localStorage.setItem('courses', JSON.stringify(newItems));
   }
-
-  //setAndSaveItems([])
 
   const addItem = (item) =>{
     const id = items.length ? items[items.length - 1].id + 1 : 1;
@@ -31,8 +33,6 @@ function App() {
     const listItems = [...items, myNewItem];
     setAndSaveItems(listItems);
   }
-
-  //addItem({date: new Date().toDateString(), course: "C++", name: "quiz 1", weight: "20%"})
 
   const handleCheck = (id) =>{
     const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked} : item);
@@ -55,19 +55,52 @@ function App() {
       weight: newWeight
     }
 
-    addItem(tempItem);
+    navigate('/');
 
+    addItem(tempItem);
     setNewCourse('');
     setNewName('');
     setNewDate('');
     setNewWeight('');
   }
 
+  const handleSort = (sort) =>{
+    switch (sort){
+      case "date":
+        break;
+
+      case "weight":
+        break;
+
+      case "smart":
+        break;
+    }
+  }
+
+  const handleSync = () =>{
+    //alert("Syncing...");
+  }
+
   return (
     <div className='App'>
       <Header title={"Fan Dates"} />
       <Routes>
-        <Route path="/" element={<AddItem
+        <Route path="/" element={
+          <Content 
+            items={items}
+            handleCheck={handleCheck}
+            handleDelete={handleDelete}
+            handleSync={handleSync}
+            getCourseView={getCourseView}
+            setGetCourseView={setGetCourseView}
+            getSort={getSort}
+            setGetSort={setGetSort}
+            handleSort={handleSort}
+          />
+        }/>
+        
+
+        <Route path="/create" element={<AddItem
           newItem={newItem}
           handleSubmit={handleSubmit}
           setNewItem={setNewItem}
@@ -77,13 +110,9 @@ function App() {
           setNewWeight={setNewWeight}
           />} />
    
-      </Routes>
-      <Content 
-        items={items}
-        handleCheck={handleCheck}
-        handleDelete={handleDelete}
-      />
+
       
+      </Routes>
     </div>
   )
 }
