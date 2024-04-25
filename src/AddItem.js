@@ -5,7 +5,7 @@ const AddItem = ({handleSubmit, setNewName, setNewCourse, setNewDate, setNewWeig
         <form className="addForm" onSubmit={handleSubmit}>
             <label htmlFor="addName">Name</label>
             <input 
-                className="nameField"
+                className="nameField"   
                 id="addName"
                 type="text"
                 placeholder="Name" 
