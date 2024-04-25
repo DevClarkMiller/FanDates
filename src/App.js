@@ -3,6 +3,8 @@ import React from 'react'
 import Header from './Header'
 import AddItem from './AddItem'
 import Content from './Content'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+
 
 
 
@@ -64,20 +66,24 @@ function App() {
   return (
     <div className='App'>
       <Header title={"Fan Dates"} />
-      <AddItem 
-        newItem={newItem}
-        handleSubmit={handleSubmit}
-        setNewItem={setNewItem}
-        setNewName={setNewName}
-        setNewCourse={setNewCourse}
-        setNewDate={setNewDate}
-        setNewWeight={setNewWeight}
-      />
+      <Routes>
+        <Route path="/" element={<AddItem
+          newItem={newItem}
+          handleSubmit={handleSubmit}
+          setNewItem={setNewItem}
+          setNewName={setNewName}
+          setNewCourse={setNewCourse}
+          setNewDate={setNewDate}
+          setNewWeight={setNewWeight}
+          />} />
+   
+      </Routes>
       <Content 
         items={items}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
       />
+      
     </div>
   )
 }
