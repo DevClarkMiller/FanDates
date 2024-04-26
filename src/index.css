@@ -170,8 +170,27 @@ td, th{
   overflow: hidden;
 }
 
-.rankCol, .weightCOl{
+.weightCol{
+  width: 15%;
+  position: relative;
+  overflow: visible;
+}
+
+.rankCol{
   width: 12%;
+}
+
+.editBtn{
+  position: absolute;
+  left: 75px;
+  left: calc(100% + 10px);
+  top: 10px;
+  transition: all 100ms ease-in-out;
+}
+
+
+.editBtn:hover{
+  color: blue;
 }
 
 .item .itemLabel:focus,

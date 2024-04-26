@@ -1,6 +1,7 @@
 import TableRow from './TableRow'
+import { FaEdit } from 'react-icons/fa';
 
-const Table = ({items}) =>{
+const Table = ({items, setItems}) =>{
     return(
         
         <table className="itemsTable">
@@ -20,6 +21,7 @@ const Table = ({items}) =>{
                         key={item.id}
                         items={items}
                         item={item}
+                        setItems={setItems}
                     />
                 ))}
             </tbody>

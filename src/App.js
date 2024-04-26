@@ -1,12 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from 'react'
 import Header from './Header'
 import AddItem from './AddItem'
 import Content from './Content'
 import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom'
-
-
-
 
 function App() {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('courses')) || []);
@@ -19,29 +16,23 @@ function App() {
   const [getSort, setGetSort] = useState('');
   const [getCourseView, setGetCourseView] = useState('');
 
-  const navigate = useNavigate(); //Used for redirecting
+  useEffect(()=>{
+    localStorage.setItem('courses', JSON.stringify(items));
+  }, [items])
 
-  const setAndSaveItems = (newItems) =>{
-    setItems(newItems);
-    localStorage.setItem('courses', JSON.stringify(newItems));
-  }
+  const navigate = useNavigate(); //Used for redirecting
 
   const addItem = (item) =>{
     const id = items.length ? items[items.length - 1].id + 1 : 1;
     const myNewItem = { id, checked: false, name: item.name, 
       date: item.date, course: item.course, weight: item.weight};
     const listItems = [...items, myNewItem];
-    setAndSaveItems(listItems);
-  }
-
-  const handleCheck = (id) =>{
-    const listItems = items.map((item) => item.id === id ? {...item, checked: !item.checked} : item);
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleDelete = (id) =>{
     const listItems = items.filter((item) => item.id !== id); 
-    setAndSaveItems(listItems);
+    setItems(listItems);
   }
 
   const handleSubmit = (e) => {
@@ -64,18 +55,16 @@ function App() {
     setNewWeight('');
   }
 
-  const handleSort = (sort) =>{
-    switch (sort){
-      case "date":
-        break;
-
-      case "weight":
-        break;
-
-      case "smart":
-        break;
-    }
-  }
+  /*const handleEdit = async (id) =>{
+      try{
+        setEditTitle('');
+        setEditBody('');
+        navigate('/');  //Moves you back to home
+      }catch(err){
+        console.log(`Error: ${err.message}`);
+      }
+  }*/
+  
 
   const handleSync = () =>{
     //alert("Syncing...");
@@ -88,17 +77,11 @@ function App() {
         <Route path="/" element={
           <Content 
             items={items}
-            handleCheck={handleCheck}
+            setItems={setItems}
             handleDelete={handleDelete}
             handleSync={handleSync}
-            getCourseView={getCourseView}
-            setGetCourseView={setGetCourseView}
-            getSort={getSort}
-            setGetSort={setGetSort}
-            handleSort={handleSort}
           />
         }/>
-        
 
         <Route path="/create" element={<AddItem
           newItem={newItem}
@@ -109,9 +92,6 @@ function App() {
           setNewDate={setNewDate}
           setNewWeight={setNewWeight}
           />} />
-   
-
-      
       </Routes>
     </div>
   )
