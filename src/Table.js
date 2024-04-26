@@ -8,7 +8,7 @@ const Table = ({items, setItems}) =>{
             <thead>
                 <tr className="itemHeader">
                     <th className="rankCol"><p className="itemData itemRank">Rank</p></th>
-                    <th clas><p className="itemData">Course</p></th>
+                    <th><p className="itemData">Course</p></th>
                     <th><p className="itemData">Name</p></th>
                     <th><p className="itemData">Due Date</p></th>
                     <th className="weightCol"><p className="itemData">Weight</p></th>
