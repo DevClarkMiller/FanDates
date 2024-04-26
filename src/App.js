@@ -14,8 +14,11 @@ function App() {
   const [newWeight, setNewWeight] = useState('');
   const [newName, setNewName] = useState('');
   const [newItem, setNewItem] = useState('');
-  const [getSort, setGetSort] = useState('');
-  const [getCourseView, setGetCourseView] = useState('');
+  
+  const [editName, setEditName] = useState('');
+  const [editCourse, setEditCourse] = useState('');
+  const [editDate, setEditDate] = useState('');
+  const [editWeight, setEditWeight] = useState('');
 
   useEffect(()=>{
     localStorage.setItem('courses', JSON.stringify(items));
@@ -56,19 +59,25 @@ function App() {
     setNewWeight('');
   }
 
-  /*const handleEdit = async (id) =>{
-      try{
-        setEditTitle('');
-        setEditBody('');
-        navigate('/');  //Moves you back to home
-      }catch(err){
-        console.log(`Error: ${err.message}`);
-      }
-  }*/
+  const handleEdit = (item) =>{
+    const index = items.indexOf(item);
+    const updatedItem = {id: item.id,  name: editName, 
+      date: editDate, course: editCourse, weight: editWeight}
+
+    const updatedItems = [...items];
+    updatedItems[index] = updatedItem;
+    setItems(updatedItems);
+    setEditName('');
+    setEditDate('');
+    setEditCourse('');
+    setEditWeight('');
+    navigate('/');
+  }
   
   const handleSync = () =>{
     //alert("Syncing...");
   }
+
 
   return (
     <div className='App'>
@@ -84,7 +93,18 @@ function App() {
         }/>
 
         <Route path="edit/:id"
-          element={<EditItem />}
+          element={<EditItem 
+            items={items}
+            editName={editName}
+            setEditName={setEditName}
+            editCourse={editCourse}
+            setEditCourse={setEditCourse}
+            editDate={editDate}
+            setEditDate={setEditDate}
+            editWeight={editWeight}
+            setEditWeight={setEditWeight}
+            handleEdit={handleEdit}
+          />}
         />
 
         <Route path="/create" element={<AddItem

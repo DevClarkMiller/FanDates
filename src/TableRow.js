@@ -1,10 +1,12 @@
 import {useState, useEffect} from "react";
 import { FaEdit } from 'react-icons/fa';
+import { useNavigate } from "react-router-dom";
 
 const TableRow = ({items, item, setItems}) =>{
     let itemIndex = items.indexOf(item);
     let rank = itemIndex + 1;
 
+    const navigate = useNavigate();
 
     return(
         <tr className="itemRow">
@@ -21,7 +23,7 @@ const TableRow = ({items, item, setItems}) =>{
 
 
             <td className="weightCol"><p className="itemData">{item.weight} </p>
-            <span><FaEdit className="editBtn"/></span></td>
+            <span><FaEdit className="editBtn" onClick={() => navigate(`edit/${item.id}`)}/></span></td>
         </tr>
     )
 }

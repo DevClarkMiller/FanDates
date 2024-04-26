@@ -133,6 +133,43 @@ ul{
   background-color: #f2f1f1;
 }
 
+.editTable{
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 2px 2px 3px black;
+}
+
+.editTable thead{
+  background-color:#9B0000;
+  color: #fff;
+}
+
+.editTable input{
+  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.317);
+  outline: none;
+}
+
+.editHeader th{
+  width: 25%;
+}
+
+.editRow td{
+  color: pink;
+  width: 25%;
+}
+
+.editRow td input{
+  width: 90%;
+}
+
+.editRow, .editHeader{
+  min-height: 35px;
+  line-height: 35px;
+}
 .itemsTable{
   width: 100%;
   table-layout: fixed;
@@ -142,7 +179,7 @@ ul{
   box-shadow: 2px 2px 3px black;
 }
 
-tr{
+.itemRow, .itemHeader{
   min-height: 35px;
   line-height: 35px;
 }
@@ -278,4 +315,10 @@ td, th{
   padding: 5px;
   border-radius: 5px;
   outline: 1px solid;
+}
+
+.editForm{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
