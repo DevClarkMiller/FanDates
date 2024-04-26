@@ -16,7 +16,7 @@ const StudyWhat = ({
             break;
           case "smart":
             //sortedItems.sort((a, b)=> (' ' + a.name).localeCompare(b.name));
-            sortedItems.sort((a, b)=> (' ' + a.course).localeCompare(b.course));
+            sortedItems.sort((a, b)=> ((a.course).toLowerCase()).localeCompare((b.course).toLowerCase()));
             break;
           default:
             break;

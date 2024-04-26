@@ -8,22 +8,20 @@ const TableRow = ({items, item, setItems}) =>{
 
     return(
         <tr className="itemRow">
-            <td className="rankCol"><input className="itemData itemRank" readOnly type="text" value={rank}/></td>
-            <td><input className="itemData" type="text" value={item.course} 
-            readOnly/></td>
+            
+            <td className="rankCol"><p className="itemData itemRank">{rank}</p></td>
+
+            <td><p className="itemData">{item.course}</p></td>
 
 
-            <td><input className="itemData" type="text" value={item.name} 
-            readOnly/></td>
+            <td><p className="itemData">{item.name}</p></td>
 
 
-            <td><input className="itemData" type="text" value={item.date} 
-            readOnly/></td>
+            <td><p className="itemData">{item.date} </p></td>
 
 
-            <td className="weightCol"><input className="itemData" type="text" value={item.weight} 
-            readOnly/>
-            <FaEdit className="editBtn"/></td>
+            <td className="weightCol"><p className="itemData">{item.weight} </p>
+            <span><FaEdit className="editBtn"/></span></td>
         </tr>
     )
 }

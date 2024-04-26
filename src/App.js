@@ -3,6 +3,7 @@ import React from 'react'
 import Header from './Header'
 import AddItem from './AddItem'
 import Content from './Content'
+import EditItem from './EditItem'
 import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom'
 
 function App() {
@@ -65,7 +66,6 @@ function App() {
       }
   }*/
   
-
   const handleSync = () =>{
     //alert("Syncing...");
   }
@@ -82,6 +82,10 @@ function App() {
             handleSync={handleSync}
           />
         }/>
+
+        <Route path="edit/:id"
+          element={<EditItem />}
+        />
 
         <Route path="/create" element={<AddItem
           newItem={newItem}

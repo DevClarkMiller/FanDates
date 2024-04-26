@@ -10,6 +10,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+p{
+  padding: 0;
+  margin: 0;
+}
+
 .App{
   height: calc(100vh - 2px);
   display: flex;
@@ -137,17 +142,6 @@ ul{
   box-shadow: 2px 2px 3px black;
 }
 
-
-.itemsTable input{
-  border: none;
-  background-color: #ffffff00;
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-wrap: break-word;
-  width: 100%;
-}
-
 tr{
   min-height: 35px;
   line-height: 35px;
@@ -157,7 +151,7 @@ tr{
   background-color: #9B0000;
 }
 
-.itemHeader input{
+.itemHeader p{
   color: white;
 }
 
@@ -176,10 +170,6 @@ td, th{
   overflow: visible;
 }
 
-.rankCol{
-  width: 12%;
-}
-
 .editBtn{
   position: absolute;
   left: 75px;
@@ -188,9 +178,26 @@ td, th{
   transition: all 100ms ease-in-out;
 }
 
+.rankCol{
+  width: 12%;
+}
+
+.itemData{
+  text-align: left;
+  font-size: 15px;
+  text-wrap: nowrap;
+  border: none;
+  background-color: #ffffff00;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  width: 100%;
+  padding: 0px 6px;
+}
 
 .editBtn:hover{
   color: blue;
+  cursor: pointer;
 }
 
 .item .itemLabel:focus,
