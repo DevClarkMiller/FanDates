@@ -78,7 +78,6 @@ function App() {
     //alert("Syncing...");
   }
 
-
   return (
     <div className='App'>
       <Header title={"Fan Dates"} />

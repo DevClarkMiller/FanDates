@@ -1,9 +1,11 @@
 import {useRef} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AddItem = ({handleSubmit, setNewName, setNewCourse, setNewDate, setNewWeight}) =>{
+    const navigate = useNavigate(); //If you don't do this, will cause issue
+    
     return(
-        <div className="addPage">
+        <main>
             <span
                 style={{display: "flex",
                 alignItems: "center",
@@ -12,7 +14,6 @@ const AddItem = ({handleSubmit, setNewName, setNewCourse, setNewDate, setNewWeig
                 gap: "25px"
             }}    
             >
-                <p><Link to="/">Take me Home</Link></p>
                 <h2>Add New Item</h2>
             </span>
             
@@ -27,7 +28,7 @@ const AddItem = ({handleSubmit, setNewName, setNewCourse, setNewDate, setNewWeig
                     required
                     onChange={(e) => setNewName(e.target.value)}
                 />
-                <label htmlFor="courseField">Add Course</label>
+                <label htmlFor="addCourse">Add Course</label>
                 <input 
                     className="courseField"
                     id="addCourse"
@@ -36,7 +37,7 @@ const AddItem = ({handleSubmit, setNewName, setNewCourse, setNewDate, setNewWeig
                     required
                     onChange={(e) => setNewCourse(e.target.value)}
                 />
-                <label htmlFor="dateField">Add Date</label>
+                <label htmlFor="addDate">Add Date</label>
                 <input 
                     className="dateField"
                     id="addDate"
@@ -53,12 +54,9 @@ const AddItem = ({handleSubmit, setNewName, setNewCourse, setNewDate, setNewWeig
                     required
                     onChange={(e) => setNewWeight(e.target.value)}
                 />
-                <button
-                    type="submit">
-                    Add
-                </button>
+                <button className="folBtn" type="submit">Add</button>
             </form>
-        </div>
+        </main>
     )
 }
 

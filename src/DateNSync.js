@@ -16,8 +16,8 @@ const DateNSync = ({handleSync}) =>{
             <h2><span className="regText">Today is </span>{dateFormatted}</h2>
 
             <span className="syncNAdd">
-                <button onClick={handleSync}>Sync with FOL</button>
-                <button onClick={() => navigate('/create')}>Create Item</button>
+                <button className='folBtn' onClick={handleSync}>Sync with FOL</button>
+                <button className='folBtn' onClick={() => navigate('/create')}>Create Item</button>
             </span>
         </div>
     )

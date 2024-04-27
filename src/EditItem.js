@@ -1,9 +1,11 @@
 import { useEffect } from "react";
-import {useParams, Link} from "react-router-dom"
+import {useParams, Link, useNavigate} from "react-router-dom"
 
 const EditItem = ({
     items, editName, setEditName, editCourse, setEditCourse, editDate, setEditDate, editWeight, setEditWeight, handleEdit
 }) =>{
+    const navigate = useNavigate();
+
     const {id} = useParams();
 
     const item = items.find(item => (item.id.toString()) === id);
@@ -20,9 +22,10 @@ const EditItem = ({
         <main>
             {editName && 
                 <>
-                    
                     <form className="editForm" onSubmit={(e) => e.preventDefault()}>
-                        <h1>Edit Item</h1>
+                        <h1 style={{margin:"10px 0", textAlign:"center"}}>Edit Item</h1>
+
+                       
                         <table className="editTable">
                             <thead>
                                 <tr className="editHeader">
@@ -66,7 +69,7 @@ const EditItem = ({
                         </table>
                         
 
-                        <button type="submit" onClick={()=> handleEdit(item)}>Submit</button>
+                        <button className="folBtn" type="submit" onClick={()=> handleEdit(item)}>Submit</button>
                     </form>
                 </>
             }

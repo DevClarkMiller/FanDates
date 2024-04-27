@@ -14,6 +14,7 @@ const Content = ({
                     setItems={setItems}
                 ></StudyWhat>
                 <Table
+                    onMouseDown={()=>alert("test")}
                     items={items}
                     setItems={setItems}>
                 </Table>
