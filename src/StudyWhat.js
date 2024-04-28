@@ -9,10 +9,10 @@ const StudyWhat = ({
         let sortedItems = [...items];
         switch (sort){
           case "date":
-            sortedItems.sort((a, b)=> (new Date(a.date)) - (new Date(a.date)));
+            sortedItems.sort((a, b)=> (new Date(a.date)) - (new Date(b.date)));
             break;
           case "weight":
-            sortedItems.sort((a, b)=> parseFloat(a.weight) - parseFloat(b.weight));
+            sortedItems.sort((a, b)=> parseFloat(b.weight) - parseFloat(a.weight));
             break;
           case "smart":
             //sortedItems.sort((a, b)=> (' ' + a.name).localeCompare(b.name));

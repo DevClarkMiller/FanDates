@@ -20,6 +20,10 @@ function App() {
   const [editDate, setEditDate] = useState('');
   const [editWeight, setEditWeight] = useState('');
 
+  //For checking if mouse is down or up
+  const [isMouseDown, setIsMouseDown] = useState(false);
+
+
   useEffect(()=>{
     localStorage.setItem('courses', JSON.stringify(items));
   }, [items])
@@ -78,6 +82,11 @@ function App() {
     //alert("Syncing...");
   }
 
+  const handleClick = (e) =>{
+    console.log(e.target);
+    setIsMouseDown(true);
+  }
+
   return (
     <div className='App'>
       <Header title={"Fan Dates"} />
@@ -88,6 +97,8 @@ function App() {
             setItems={setItems}
             handleDelete={handleDelete}
             handleSync={handleSync}
+            isMouseDown={isMouseDown}
+            setIsMouseDown={setIsMouseDown}
           />
         }/>
 

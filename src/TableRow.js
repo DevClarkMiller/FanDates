@@ -2,14 +2,25 @@ import {useState, useEffect} from "react";
 import { FaEdit } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 
-const TableRow = ({items, item, setItems}) =>{
+const TableRow = ({items, item, setItems, isMouseDown, setIsMouseDown, downTimer, setDownTimer}) =>{
     let itemIndex = items.indexOf(item);
     let rank = itemIndex + 1;
 
     const navigate = useNavigate();
 
+    const handleHold = (target) =>{
+        //console.log(target)
+        while(isMouseDown){
+            setTimeout(()=>{
+
+            }, 1000)
+        }
+    }
+
+    
+
     return(
-        <tr className="itemRow">
+        <tr className="itemRow" onMouseDown={(e)=> handleHold(e.target)}>
             
             <td className="rankCol"><p className="itemData itemRank">{rank}</p></td>
 

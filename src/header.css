@@ -12,6 +12,9 @@ header{
   }
   
   header button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 5px 5px;
     justify-self: flex-end;
     height: fit-content;
