@@ -22,6 +22,7 @@ const Table = ({items, setItems}) =>{
             
             <tbody>
                 {items.map((item) => (
+                    //Learn about event bubbling so that this will work
                     <TableRow 
                         onMouseDown={()=>alert("ckic")} 
                         key={item.id}
