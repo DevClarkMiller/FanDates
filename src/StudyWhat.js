@@ -4,6 +4,23 @@ const StudyWhat = ({
     items, setItems
 }) =>{
 
+    const balancedSort = (a, b) =>{
+      let weightLhs;
+      let weightRhs;
+
+      const daysLhs = parseInt(Math.floor((new Date(a.date) - new Date()) / (1000 * 60 * 60 * 24)));
+      const daysRhs = parseInt(Math.floor((new Date(b.date) - new Date()) / (1000 * 60 * 60 * 24)));
+
+
+      if (daysLhs === 0 && daysRhs === 0){ return parseFloat(a.weight) - parseFloat(b.weight); }
+      else if(daysLhs === 0 ){ console.log(`Second: ${parseFloat(a.weight) * 100}`); weightLhs = parseFloat(a.weight) * 100;}
+      else if (daysRhs === 0){ weightRhs = parseFloat(b.weight) * 100; }
+      else {
+        weightLhs = parseFloat(a.weight) / daysLhs;
+        weightRhs = parseFloat(b.weight) / daysRhs;
+      }
+      return weightLhs - weightRhs;
+    }
 
     const handleSort = (sort) =>{
         let sortedItems = [...items];
@@ -15,8 +32,7 @@ const StudyWhat = ({
             sortedItems.sort((a, b)=> parseFloat(b.weight) - parseFloat(a.weight));
             break;
           case "smart":
-            //sortedItems.sort((a, b)=> (' ' + a.name).localeCompare(b.name));
-            sortedItems.sort((a, b)=> ((a.course).toLowerCase()).localeCompare((b.course).toLowerCase()));
+            sortedItems.sort(balancedSort);
             break;
           default:
             break;
@@ -28,19 +44,19 @@ const StudyWhat = ({
         <div className="selectWhat">
             <h2 style={{fontWeight: 500}}>What should I study today?</h2>
             <div className="selectArea">
-                <select 
+                <select defaultValue="smart"
                     onChange={(e)=> handleSort(e.target.value)}
                     >
-                    <option selected hidden>Sort By</option>
+                    <option value="" selected hidden>Sort By</option>
                     <option value="date">Date</option>
                     <option value="weight">Weight</option>
                     <option value="smart">Smart</option>
                 </select>
                 
                 <select
-                    
+                    defaultValue="all"
                 >
-                    <option selected hidden>Show More</option>
+                    <option value="" selected hidden>Show More</option>
                     <option value="all">All</option>
                     {items.map((item) => (
                     <StudyOption 

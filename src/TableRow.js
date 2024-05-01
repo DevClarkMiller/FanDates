@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt, faTrash } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 
 const TableRow = ({items, item, setItems, isMouseDown, setIsMouseDown, downTimer, setDownTimer}) =>{
@@ -17,12 +17,17 @@ const TableRow = ({items, item, setItems, isMouseDown, setIsMouseDown, downTimer
         }
     }
 
+    const handleDelete = () =>{
+        const id = item.id;
+        const listItems = items.filter((item) => item.id !== id); 
+        setItems(listItems);
+    }
     
 
     return(
         <tr className="itemRow" onMouseDown={(e)=> handleHold(e.target)}>
             
-            <td className="rankCol"><p className="itemData itemRank">{rank}</p></td>
+            <td className="rankCol"><span><FaTrashAlt className="deleteBtn" onClick={handleDelete}/></span><p className="itemData itemRank">{rank}</p></td>
 
             <td><p className="itemData">{item.course}</p></td>
 

@@ -79,7 +79,7 @@ function App() {
   }
   
   const handleSync = () =>{
-    //alert("Syncing...");
+    alert("Syncing...");
   }
 
   const handleClick = (e) =>{

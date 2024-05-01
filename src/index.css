@@ -208,6 +208,21 @@ td, th{
 
 .rankCol{
   width: 12%;
+  position: relative;
+  overflow: visible;
+}
+
+.deleteBtn{
+  position: absolute;
+  left: 75px;
+  left: -25px;
+  top: 10px;
+  transition: all 100ms ease-in-out;
+}
+
+.deleteBtn:hover, .deleteBtn:focus{
+  color: red;
+  cursor: pointer;
 }
 
 .itemData{
@@ -224,7 +239,7 @@ td, th{
   user-select: none;
 }
 
-.editBtn:hover{
+.editBtn:hover, .editBtn:focus{
   color: blue;
   cursor: pointer;
 }
