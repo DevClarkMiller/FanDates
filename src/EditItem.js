@@ -23,7 +23,7 @@ const EditItem = ({
             {editName && 
                 <>
                     <form className="editForm" onSubmit={(e) => e.preventDefault()}>
-                        <h1 style={{margin:"10px 0", textAlign:"center"}}>Edit Item</h1>
+                        <h2 style={{margin:"10px 0", textAlign:"center"}}>Edit Item</h2>
 
                        
                         <table className="editTable">

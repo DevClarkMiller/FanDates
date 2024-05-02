@@ -4,6 +4,7 @@ import Header from './Header'
 import AddItem from './AddItem'
 import Content from './Content'
 import EditItem from './EditItem'
+import Footer from './Footer'
 import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom'
 
 function App() {
@@ -176,6 +177,7 @@ function App() {
           setNewWeight={setNewWeight}
           />} />
       </Routes>
+      <Footer></Footer>
     </div>
   )
 }

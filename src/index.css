@@ -2,7 +2,6 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  padding-bottom: 25px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -16,19 +15,15 @@ p{
 }
 
 .App{
-  height: calc(100vh - 2px);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-footer{
-  width: 100%;
-  background-color: #9B0000;
-  color: white;
-  justify-self: start;
-}
 
 .addPage{
   margin: 0;
@@ -37,7 +32,7 @@ footer{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   flex-grow: 1;
 }
 
@@ -55,10 +50,15 @@ main{
 }
 
 footer{
+  justify-self: flex-end;
   display: flex;
   justify-content: center;
   margin: 0;
+  margin-top: 50px;
   padding: 0;
+  background-color:#9B0000;
+  height: 75px;
+  width: 100%;
 }
 
 ul{
@@ -328,4 +328,46 @@ td, th{
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+h2{
+  font-size: 30px;
+}
+
+.createTable{
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: 2px 2px 3px black;
+}
+
+.createTable th{
+  width: 25%;
+  text-align: left;
+  padding-left: 10px;
+  background-color: #9B0000;
+  color: white;
+  border-bottom: 1px solid black;
+}
+
+/*Last row*/
+.createTable tbody tr:last-child th{
+  border: none;
+}
+
+.createTable tbody tr:last-child td{
+  border: none;
+}
+
+.createTable td{
+  width: 75%;
+  text-align: left;
+  padding: 0 5px;
+  border-bottom: 1px solid black;
+}
+
+.createTable td input{
+  width: 95%;
 }
