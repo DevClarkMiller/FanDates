@@ -20,13 +20,19 @@ function App() {
   const [editDate, setEditDate] = useState('');
   const [editWeight, setEditWeight] = useState('');
 
+  const [sort, setSort] = useState('smart');
+
   //For checking if mouse is down or up
   const [isMouseDown, setIsMouseDown] = useState(false);
-
 
   useEffect(()=>{
     localStorage.setItem('courses', JSON.stringify(items));
   }, [items])
+
+
+  useEffect(()=>{
+    handleSort(sort);
+  }, [sort])
 
   const navigate = useNavigate(); //Used for redirecting
 
@@ -82,9 +88,42 @@ function App() {
     alert("Syncing...");
   }
 
-  const handleClick = (e) =>{
-    console.log(e.target);
-    setIsMouseDown(true);
+
+  //For best decision on what to work on next :)
+  const balancedSort = (a, b) =>{
+    let weightLhs;
+    let weightRhs;
+
+    const daysLhs = parseInt(Math.floor((new Date(a.date) - new Date()) / (1000 * 60 * 60 * 24)));
+    const daysRhs = parseInt(Math.floor((new Date(b.date) - new Date()) / (1000 * 60 * 60 * 24)));
+
+
+    if (daysLhs === 0 && daysRhs === 0){ return parseFloat(a.weight) - parseFloat(b.weight); }
+    else if(daysLhs === 0 ){ weightLhs = parseFloat(a.weight) * 100;}
+    else if (daysRhs === 0){ weightRhs = parseFloat(b.weight) * 100; }
+    else {
+      weightLhs = parseFloat(a.weight) / daysLhs;
+      weightRhs = parseFloat(b.weight) / daysRhs;
+    }
+    return weightLhs - weightRhs;
+  }
+
+  const handleSort = (sort) =>{
+      let sortedItems = [...items]; //Creates shallow copy of the items array
+      switch (sort){
+        case "date":
+          sortedItems.sort((a, b)=> (new Date(a.date)) - (new Date(b.date)));
+          break;
+        case "weight":
+          sortedItems.sort((a, b)=> parseFloat(b.weight) - parseFloat(a.weight));
+          break;
+        case "smart":
+          sortedItems.sort(balancedSort);
+          break;
+        default:
+          break;
+      }
+      setItems(sortedItems)
   }
 
   return (
@@ -99,6 +138,9 @@ function App() {
             handleSync={handleSync}
             isMouseDown={isMouseDown}
             setIsMouseDown={setIsMouseDown}
+            handleSort={handleSort}
+            sort={sort}
+            setSort={setSort}
           />
         }/>
 

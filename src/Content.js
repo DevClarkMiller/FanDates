@@ -4,7 +4,7 @@ import DateNSync from './DateNSync'
 import {useState, useEffect} from "react";
 
 const Content = ({
-    items, setItems, handleDelete, handleSync, isMouseDown, setIsMouseDown
+    items, setItems, handleDelete, handleSync, isMouseDown, setIsMouseDown, handleSort, sort, setSort
 }) =>{
 
     const {downTimer, setDownTimer} = useState(0);
@@ -21,9 +21,11 @@ const Content = ({
                 <StudyWhat
                     items={items}
                     setItems={setItems}
+                    handleSort={handleSort}
+                    sort={sort}
+                    setSort={setSort}
                 ></StudyWhat>
                 <Table
-                    onMouseDown={()=>alert("test")}
                     items={items}
                     setItems={setItems}
                     isMouseDown={isMouseDown}
