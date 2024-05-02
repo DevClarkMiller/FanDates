@@ -37,7 +37,10 @@ function App() {
   const navigate = useNavigate(); //Used for redirecting
 
   const addItem = (item) =>{
-    const id = items.length ? items[items.length - 1].id + 1 : 1;
+
+    //Adds 1 to the highest id in the array, or sets id to 1 if the array is empty
+    const id = items.length ? Math.max(...items.map(item => item.id), 0) + 1 : 0;
+
     const myNewItem = { id, checked: false, name: item.name, 
       date: item.date, course: item.course, weight: item.weight};
     const listItems = [...items, myNewItem];
@@ -162,6 +165,10 @@ function App() {
         <Route path="/create" element={<AddItem
           newItem={newItem}
           handleSubmit={handleSubmit}
+          newCourse={newCourse}
+          newName={newName}
+          newDate={newDate}
+          newWeight={newWeight}
           setNewItem={setNewItem}
           setNewName={setNewName}
           setNewCourse={setNewCourse}
